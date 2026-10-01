@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Pacifica High School Tritons brand style guide: official logos, colors, uniform specs, Triton Block typeface, and usage rules.">
+<meta name="theme-color" content="#11110F">
+<meta property="og:title" content="Pacifica Tritons Brand Guide">
+<meta property="og:description" content="Official logos, colors, uniform specs, typography, and usage rules for Pacifica High School.">
+<meta property="og:image" content="logos/png/pacifica-primary-logo-full-color.png">
+<link rel="icon" type="image/svg+xml" href="logos/svg/pacifica-alt-primary-trident-full-color.svg">
+<link rel="apple-touch-icon" href="logos/png/pacifica-shield-logo-full-color.png">
+<link rel="preload" href="fonts/woff2/TritonBlock-Solid.woff2" as="font" type="font/woff2" crossorigin>
+<title>Pacifica Tritons Brand Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+@font-face{font-family:"Triton Block";src:url("fonts/woff2/TritonBlock-Solid.woff2") format("woff2"),url("fonts/otf/TritonBlock-Solid.otf") format("opentype");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Triton Block Shadow";src:url("fonts/woff2/TritonBlock-Shadow.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Triton Block Outline";src:url("fonts/woff2/TritonBlock-Outline.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Triton Block Color";src:url("fonts/woff2/TritonBlock-Color.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-palette-values --tb-light{font-family:"Triton Block Color";base-palette:1}
+@font-palette-values --tb-dark{font-family:"Triton Block Color";base-palette:0}
+
+/* Layout: type-foundry specimen catalog. Dark-first, cream type, a full-width hairline frame;
+   every section is a bordered row with a tiny meta line above an oversized Triton Block heading.
+   Logos sit on cream "stage" panels because the marks are drawn for light grounds. */
+:root{
+  --bg:#11110F; --panel:#161614; --fg:#F6F0DA; --muted:#8E8B80; --dim:#5F5D56; --line:#2C2B27;
+  --inv-bg:#F6F0DA; --inv-fg:#11110F; --stage:#F6F0DA; --stage-line:#2C2B27;
+  --ok:#9AD6AE; --bad:#F09C8C; --warn:#E6C066; --tb-pal:--tb-light;
+  --green:#006747; --gold:#CC8A00;
+  --display:"Triton Block","Arial Narrow",sans-serif;
+  --body:"Open Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F3EFE2; --panel:#F8F5EB; --fg:#141412; --muted:#69665C; --dim:#9C998D; --line:#D6D0BE;
+  --inv-bg:#141412; --inv-fg:#F6F0DA; --stage:#FFFFFF; --stage-line:#D6D0BE;
+  --ok:#0B6B3A; --bad:#A3241B; --warn:#7A5300; --tb-pal:--tb-dark; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#F3EFE2; --panel:#F8F5EB; --fg:#141412; --muted:#69665C; --dim:#9C998D; --line:#D6D0BE;
+  --inv-bg:#141412; --inv-fg:#F6F0DA; --stage:#FFFFFF; --stage-line:#D6D0BE;
+  --ok:#0B6B3A; --bad:#A3241B; --warn:#7A5300; --tb-pal:--tb-dark; color-scheme:light}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--dim)}
+a:hover{text-decoration-color:var(--fg)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+p{margin:0;max-width:66ch}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+.frame{max-width:1440px;margin:0 auto;padding-inline:clamp(16px,2.4vw,32px)}
+.box{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.lbl{font-size:11.5px;line-height:1.4;color:var(--muted);letter-spacing:.01em}
+.lbl b{color:var(--fg);font-weight:600}
+.dl-link{font-size:11.5px;color:var(--fg);text-decoration:none;border-bottom:1px solid var(--dim);padding-bottom:1px;cursor:pointer;background:none;border-top:0;border-left:0;border-right:0;font-family:var(--body)}
+.dl-link:hover{border-bottom-color:var(--fg)}
+
+/* Top bar */
+.top{border-bottom:1px solid var(--line)}
+.top .frame{display:grid;grid-template-columns:minmax(220px,1.1fr) repeat(4,minmax(0,.62fr)) minmax(0,1fr);min-height:96px}
+.brand{display:flex;align-items:center;gap:12px;padding:20px 0;text-decoration:none}
+.brand img{height:40px}
+.brand span{font-family:var(--display);font-size:28px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.brand sup{font-family:var(--body);font-size:10px;vertical-align:top;margin-left:2px}
+.tab{border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px 12px;text-decoration:none;color:var(--fg);font-size:13.5px;font-weight:500;transition:background .15s,color .15s}
+.tab .n{font-size:11px;color:var(--muted);transition:color .15s}
+.tab:hover{background:var(--panel)}
+.tab.on{background:var(--inv-bg);color:var(--inv-fg)}
+.tab.on .n{color:var(--inv-fg)}
+.tab-end{border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:0 16px;text-align:center}
+@media (max-width:900px){
+  .top .frame{grid-template-columns:repeat(4,minmax(0,1fr));min-height:0}
+  .brand{grid-column:1/-1;border-bottom:1px solid var(--line);padding:16px 0}
+  .tab{min-height:64px}.tab:first-of-type{border-left:0}
+  .tab-end{display:none}
+}
+
+/* Sticky tester bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.tester{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1.2fr) auto;align-items:center;gap:20px;padding-block:10px;border-bottom:1px solid var(--line)}
+.tfield{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:6px 0}
+.tfield svg{flex:none;opacity:.6}
+.tfield input{flex:1;min-width:0;background:none;border:0;color:var(--fg);font:400 14px/1.4 var(--body);padding:0}
+.tfield input::placeholder{color:var(--muted)}
+.tfield input:focus{outline:none}
+.presets{display:flex;gap:16px;font-size:13.5px}
+.presets button,.vchips button{background:none;border:0;padding:0;font:500 13.5px/1.4 var(--body);color:var(--muted);cursor:pointer}
+.presets button[aria-pressed="true"],.vchips button[aria-pressed="true"]{color:var(--fg)}
+.presets button:hover,.vchips button:hover{color:var(--fg)}
+.sizer{display:flex;align-items:center;gap:14px;font-size:13.5px}
+.sizer output{min-width:52px;font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;min-width:60px;height:18px;background:transparent}
+input[type=range]::-webkit-slider-runnable-track{height:1px;background:var(--fg)}
+input[type=range]::-moz-range-track{height:1px;background:var(--fg)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--fg);background:var(--bg);margin-top:-8px}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--fg);background:var(--bg)}
+.tools{display:flex;align-items:center;gap:12px}
+.dot{width:16px;height:16px;border-radius:50%;border:1px solid var(--line);cursor:pointer;padding:0}
+.dot[aria-pressed="true"]{outline:1.5px solid var(--fg);outline-offset:2px}
+.theme{background:none;border:0;padding:0;cursor:pointer;color:var(--fg);display:grid;place-items:center}
+.reset{background:none;border:0;padding:0;font:600 13.5px/1 var(--body);color:var(--fg);cursor:pointer;margin-left:8px}
+.secnav{display:flex;gap:2px 22px;overflow-x:auto;scrollbar-width:none;padding-block:10px;font-size:12px}
+.secnav::-webkit-scrollbar{display:none}
+.secnav a{flex:none;color:var(--muted);text-decoration:none}
+.secnav a:hover,.secnav a.on{color:var(--fg)}
+.secnav .count{flex:none;font-family:var(--display);font-size:18px;line-height:1;color:var(--fg);margin-right:6px}
+@media (max-width:1000px){.tester{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.presets{display:none}}
+@media (max-width:620px){.tester{grid-template-columns:minmax(0,1fr) auto;gap:12px}.tools .dot,.tools .reset,.sizer{display:none}}
+
+/* Rows */
+.row{border-bottom:1px solid var(--line)}
+.row-in{padding:22px clamp(16px,2vw,24px) 40px}
+.meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.meta .r{display:flex;gap:4px 28px;flex-wrap:wrap}
+.h-xl{font-family:var(--display);font-size:clamp(3.4rem,9.5vw,9.5rem);line-height:.92;text-transform:uppercase;letter-spacing:.005em}
+.h-l{font-family:var(--display);font-size:clamp(2.8rem,6.5vw,6.2rem);line-height:.95;text-transform:uppercase}
+.h-s{font-family:var(--display);font-size:1.6rem;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.lead{color:var(--muted);margin-top:18px;font-size:15.5px}
+.lead b{color:var(--fg);font-weight:600}
+
+/* Hero */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:32px;align-items:center}
+.hero-grid img{width:100%;max-width:420px;justify-self:end}
+.hero-copy{display:grid;gap:12px;font-size:16px}
+.hero-copy p:first-of-type{color:var(--muted)}
+@media (max-width:760px){.hero-grid{grid-template-columns:1fr}.hero-grid img{justify-self:start;max-width:280px}}
+
+/* Hairline grids (cells share borders) */
+.grid{display:grid;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.grid>*{border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:1100px){.g4{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){.g4,.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.g4,.g3,.g2{grid-template-columns:1fr}}
+.cell{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px}
+.cell .meta{margin:0}
+.stage{background:var(--stage);aspect-ratio:144/85;display:grid;place-items:center;position:relative}
+.stage img{width:100%;height:100%;object-fit:contain}
+.stage .tag{position:absolute;top:8px;left:8px;font-size:10.5px;color:#4b4a44;background:rgba(0,0,0,.06);padding:3px 6px}
+.cell p{font-size:13px;color:var(--muted)}
+.cell .acts{display:flex;gap:16px;margin-top:auto;padding-top:4px}
+.vchips{display:flex;flex-wrap:wrap;gap:4px 18px}
+
+/* Notes */
+.note{border:1px solid var(--line);padding:14px 16px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;font-size:14px}
+.note .lbl{padding-top:2px}
+.note.warn .lbl{color:var(--warn)}
+.note p{max-width:none}
+@media (max-width:620px){.note{grid-template-columns:1fr;gap:4px}}
+.stack{display:grid;gap:12px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+
+/* Clear space */
+.cs{background:var(--stage);padding:32px;display:grid;place-items:center}
+.cs-box{position:relative;outline:1.5px dashed #CC8A00;padding:8%;width:min(100%,440px)}
+.cs-box img{display:block;width:100%;outline:1px solid rgba(0,103,71,.3)}
+.cs-x{position:absolute;font:600 12px/1 var(--mono);color:#8A5D00}
+.cs-x.t{top:2%;left:50%;transform:translateX(-50%)}.cs-x.b{bottom:2%;left:50%;transform:translateX(-50%)}
+.cs-x.l{left:2.5%;top:50%;transform:translateY(-50%)}.cs-x.r{right:2.5%;top:50%;transform:translateY(-50%)}
+
+/* Tables */
+.tbl{overflow-x:auto;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+th{font-weight:500;font-size:11.5px;color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+.sq{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:8px;border:1px solid rgba(128,128,128,.35)}
+.aa{display:inline-grid;place-items:center;width:38px;height:26px;font:700 13px/1 var(--body);margin-right:8px;border:1px solid rgba(128,128,128,.25)}
+.pill{font-size:11px;font-weight:600;padding:2px 6px;border:1px solid currentColor;margin-left:6px}
+.pill.aaa,.pill.aa2{color:var(--ok)} .pill.lg{color:var(--warn)} .pill.fail{color:var(--bad)}
+
+/* Do / Don't */
+.ex{aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden;padding:18px;background:var(--stage);position:relative}
+.ex img{max-width:100%;max-height:100%}
+.verdict{font-size:11.5px;font-weight:600}
+.do .verdict{color:var(--ok)} .dont .verdict{color:var(--bad)}
+.dont .ex::after{content:"";position:absolute;right:10px;bottom:10px;width:22px;height:22px;border-radius:50%;background:#A3241B url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 6l8 8M14 6l-8 8' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.retype{font-family:"Triton Block",sans-serif;color:#006747;font-size:2.3rem;line-height:.95;text-align:center}
+.busy{background:repeating-linear-gradient(45deg,#2E8C68 0 14px,#CC8A00 14px 28px,#A2AAAD 28px 42px)!important}
+
+/* Color */
+.sw .chip{height:220px;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between}
+.sw .chip span{font-size:11.5px;opacity:.8}
+.sw .chip h3{font-family:var(--display);font-size:clamp(2.2rem,3.4vw,3.2rem);line-height:.95;text-transform:uppercase}
+.sw dl{margin:0;padding:12px 16px 4px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:6px 10px;font-size:12px}
+.sw dt{color:var(--muted)}
+.sw dd{margin:0;min-width:0}
+.sw .use{padding:4px 16px 16px;font-size:12.5px;color:var(--muted)}
+.copy{font:500 12px/1.35 var(--mono);background:none;border:0;padding:0;color:var(--fg);cursor:pointer;text-align:left;border-bottom:1px dashed var(--dim)}
+.copy:hover{border-bottom-color:var(--fg)}
+.ramp{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid var(--line)}
+.ramp button{border:0;min-height:96px;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:2px;cursor:pointer;font:500 11px/1.25 var(--body);text-align:left}
+.ramp button span{font:500 11px/1.25 var(--mono)}
+@media (max-width:700px){.ramp{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Type specimens */
+#type{--size:120px;--spec-color:var(--fg)}
+.spec-row{border-bottom:1px solid var(--line);padding:16px clamp(16px,2vw,24px) 18px;display:grid;gap:8px}
+.spec-row:first-of-type{border-top:1px solid var(--line)}
+.spec{font-size:min(var(--size),17vw);line-height:1.08;color:var(--spec-color);white-space:nowrap;overflow:hidden;text-overflow:clip;padding-block:.05em;outline:none}
+.spec.solid{font-family:"Triton Block",var(--display)}
+.spec.outline{font-family:"Triton Block Outline",var(--display)}
+.spec.color{font-family:"Triton Block Color",var(--display);font-palette:var(--tb-pal)}
+.spec.layered{display:grid}
+.spec.layered>span{grid-area:1/1}
+.spec.layered .sh{font-family:"Triton Block Shadow",var(--display);color:var(--fg)}
+.spec.layered .so{font-family:"Triton Block",var(--display);color:var(--bg)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.glyphs{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.glyphs span{border-right:1px solid var(--line);border-bottom:1px solid var(--line);aspect-ratio:1;display:grid;place-items:center;font-family:"Triton Block",var(--display);font-size:30px;color:var(--spec-color)}
+.glyphs span:hover{background:var(--inv-bg);color:var(--inv-fg)}
+.body-spec{font-family:var(--body);font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.05;font-weight:600}
+ul.tick{margin:0;padding-left:1.1em;display:grid;gap:6px;font-size:14px}
+ul.tick b{font-weight:600}
+
+/* AI */
+.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{counter-increment:s;padding:16px;display:grid;gap:6px;align-content:start;font-size:13.5px;color:var(--muted)}
+.steps li::before{content:"0" counter(s);font-family:var(--display);font-size:3.4rem;line-height:.9;color:var(--fg)}
+.steps b{color:var(--fg);font-weight:600;font-size:14px}
+.prompt{padding:16px;display:grid;gap:10px;font-size:13.5px}
+.prompt q{display:block;quotes:none;font:400 13px/1.55 var(--mono);color:var(--fg);border-left:2px solid var(--line);padding-left:12px}
+.prompt.bad .verdict{color:var(--bad)} .prompt.good .verdict{color:var(--ok)}
+
+/* Ask */
+.askf{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.askf .tfield{flex:1 1 280px}
+.btn{background:var(--inv-bg);color:var(--inv-fg);border:0;font:600 13px/1 var(--body);padding:11px 16px;cursor:pointer;text-decoration:none;display:inline-block}
+.answer{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;align-items:start;border-top:1px solid var(--line);padding-top:20px;margin-top:6px}
+@media (max-width:640px){.answer{grid-template-columns:1fr}}
+.answer dl{margin:10px 0 0;display:grid;grid-template-columns:60px minmax(0,1fr);gap:8px 14px;font-size:14px}
+.answer dt{color:var(--muted);font-size:12px;padding-top:2px}
+.answer dd{margin:0}
+
+footer{padding-block:20px 40px}
+footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--inv-bg);color:var(--inv-fg);padding:9px 14px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="frame box">
+    <a class="brand" href="#top" id="top"><img src="logos/svg/pacifica-alt-primary-trident-one-color.svg" alt=""><span>Tritons<sup>™</sup></span></a>
+    <a class="tab" href="#logo" data-sec="logo"><span>Logos</span><span class="n">33 files</span></a>
+    <a class="tab" href="#color" data-sec="color"><span>Colors</span><span class="n">5</span></a>
+    <a class="tab" href="#type" data-sec="type"><span>Type</span><span class="n">4 styles</span></a>
+    <a class="tab" href="#usage" data-sec="usage"><span>Rules</span><span class="n">12</span></a>
+    <div class="tab-end lbl">Pacifica High School<br>Brand Style Guide · 2026</div>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="frame box">
+    <div class="tester" style="padding-inline:clamp(16px,2vw,24px)">
+      <label class="tfield" for="tt"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M11 2l3 3-8 8H3v-3z"/></svg><input id="tt" type="text" placeholder="Your text" autocomplete="off"></label>
+      <div class="presets" role="group" aria-label="Sample text">
+        <button type="button" data-p="spirit" aria-pressed="true">Spirit</button>
+        <button type="button" data-p="events" aria-pressed="false">Events</button>
+        <button type="button" data-p="numbers" aria-pressed="false">Numbers</button>
+      </div>
+      <div class="sizer"><output id="szo" for="sz">120px</output><input id="sz" type="range" min="32" max="220" value="120" aria-label="Sample size"></div>
+      <div class="tools">
+        <button class="dot" type="button" data-c="fg" aria-pressed="true" aria-label="Cream or ink" style="background:var(--fg)"></button>
+        <button class="dot" type="button" data-c="#2E9E74" aria-pressed="false" aria-label="Pacifica Green" style="background:#006747"></button>
+        <button class="dot" type="button" data-c="#CC8A00" aria-pressed="false" aria-label="Pacifica Gold" style="background:#CC8A00"></button>
+        <button class="theme" type="button" id="themeBtn" aria-label="Switch light or dark"><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
+        <button class="reset" type="button" id="resetBtn">Reset All</button>
+      </div>
+    </div>
+    <nav class="secnav" aria-label="Sections" style="padding-inline:clamp(16px,2vw,24px)">
+      <span class="count">10</span>
+      <a href="#logo">Logo Library</a><a href="#clear-space">Clear Space</a><a href="#usage">Usage Rules</a><a href="#color">Color</a><a href="#apparel">Uniforms</a><a href="#accessibility">Accessibility</a><a href="#type">Typography</a><a href="#name">Name</a><a href="#ai">AI &amp; Flyers</a><a href="#ask">Ask</a>
+    </nav>
+  </div>
+</div>
+
+<main class="frame box" style="padding-inline:0">
+<!-- HERO -->
+<section class="row"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>Pacifica High School</b> · Oxnard, California</span><span class="r lbl"><span>Official Club Logos &amp; Uniform Graphics</span><span>Marks by Brandiose · v8/1/23</span><span>Oxnard Union High School District</span></span></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <h1 class="h-xl" style="margin-bottom:18px">Tritons Brand<br>Style Guide</h1>
+      <p>How to use the Pacifica Tritons logos, colors, and type consistently across print, web, apparel, uniforms, presentations, and AI-generated materials.</p>
+      <p><b>Everyone creating Pacifica materials, including staff, coaches, clubs, ASB, and boosters, should check this page before designing anything new.</b></p>
+    </div>
+    <img src="logos/svg/pacifica-secondary-logo-full-color.svg" alt="Pacifica Tritons secondary logo: the Triton figure holding a trident">
+  </div>
+</div></section>
+
+<!-- LOGO LIBRARY -->
+<section class="row" id="logo"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>01</b> Logo Library</span><span class="r lbl"><span>9 marks</span><span>4 color versions</span><span>SVG + PNG</span></span></div>
+  <h2 class="h-l">Logo Library</h2>
+  <p class="lead">Pick the mark that fits your space and the version that fits how it will be printed or displayed. Always use these files. <b>Never recreate, redraw, trace, or approximate any Pacifica mark.</b></p>
+  <div class="meta" style="margin:28px 0 12px">
+    <div class="vchips" role="group" aria-label="Color version">
+      <button type="button" data-v="full-color" aria-pressed="true">Full color</button>
+      <button type="button" data-v="one-color" aria-pressed="false">One color</button>
+      <button type="button" data-v="grayscale" aria-pressed="false">Grayscale</button>
+      <button type="button" data-v="black-white" aria-pressed="false">Black &amp; white</button>
+    </div>
+    <a class="btn" href="pacifica-tritons-logos.zip" download>Download all logos ↓</a>
+  </div>
+  <p class="lbl" id="vhint" style="margin-bottom:14px"></p>
+  <div class="grid g3" id="logos"></div>
+  <div class="note" style="margin-top:20px"><span class="lbl">File formats</span><p>SVG is the vector master for print shops, signage, embroidery digitizing, and anything that will be scaled. PNG files are 2400px wide with transparent backgrounds for slides, documents, and the web. The original Brandiose reference sheets: <a class="dl-link" href="sheets/pacifica-brand-sheet-p1.png" download>p.1</a> <a class="dl-link" href="sheets/pacifica-brand-sheet-p2.png" download>p.2</a> <a class="dl-link" href="sheets/pacifica-brand-sheet-p3.png" download>p.3</a></p></div>
+</div></section>
+
+<!-- CLEAR SPACE -->
+<section class="row" id="clear-space"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>02</b> Clear Space &amp; Size</span><span class="r lbl"><span>x = cap height of PACIFICA</span></span></div>
+  <h2 class="h-l">Clear Space</h2>
+  <p class="lead">Keep the area around the logo free of text, photos, other logos, and the edge of the page so it can breathe and stay legible.</p>
+  <div class="two" style="margin-top:28px">
+    <div class="cs"><div class="cs-box"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt="Pacifica primary logo with clear space zone marked"><span class="cs-x t">x</span><span class="cs-x b">x</span><span class="cs-x l">x</span><span class="cs-x r">x</span></div></div>
+    <div class="stack">
+      <p><b>Minimum clear space on every side equals x,</b> the height of the letters in PACIFICA (the small top line of the word mark). For marks without lettering, such as the trident or shield, use one quarter of the mark's width. When the logo is resized, the clear space scales with it.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Recommended minimum</th><th>Print</th><th>Screen</th></tr></thead>
+        <tbody class="num">
+          <tr><td>Primary Logo</td><td>1.25 in wide</td><td>160 px wide</td></tr>
+          <tr><td>Secondary Logo (Triton)</td><td>1.25 in wide</td><td>160 px wide</td></tr>
+          <tr><td>Word Marks</td><td>1 in wide</td><td>120 px wide</td></tr>
+          <tr><td>Shield Logo</td><td>0.5 in tall</td><td>48 px tall</td></tr>
+          <tr><td>Alternate Primary (Trident)</td><td>0.4 in tall</td><td>32 px tall</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note"><span class="lbl">Small sizes</span><p>Below these sizes the Triton's beard, crown, and trident detail fill in. For favicons, social avatars, and small embroidery, switch to the trident or shield instead of shrinking the full logo.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- USAGE -->
+<section class="row" id="usage"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>03</b> Usage Rules</span><span class="r lbl"><span>4 do</span><span>8 don't</span></span></div>
+  <h2 class="h-l">Protect the Marks</h2>
+  <p class="lead">Proportions, colors, and construction are fixed. If you find yourself dragging a corner handle, changing a fill color, or adding an effect, stop and grab a different file from the library instead.</p>
+  <div class="grid g4" style="margin-top:28px">
+    <div class="cell do"><div class="ex"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt=""></div><span class="verdict">✓ Do</span><p>Use the full-color logo on white or light backgrounds whenever color printing is available.</p></div>
+    <div class="cell do"><div class="ex" style="background:#006747"><img src="logos/svg/pacifica-alt-primary-trident-one-color.svg" alt=""></div><span class="verdict">✓ Do</span><p>On Pacifica Green, use the trident or Triton figure. Their built-in white fills keep them visible.</p></div>
+    <div class="cell do"><div class="ex" style="background:#54585A"><img src="logos/svg/pacifica-secondary-logo-full-color.svg" alt=""></div><span class="verdict">✓ Do</span><p>The Secondary Logo (Triton) holds up on dark gray and black for athletics and spirit graphics.</p></div>
+    <div class="cell do"><div class="ex"><img src="logos/svg/pacifica-shield-logo-full-color.svg" alt=""></div><span class="verdict">✓ Do</span><p>Use the Shield for square spaces: social avatars, stickers, patches, and app icons.</p></div>
+    <div class="cell dont"><div class="ex"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt="" style="transform:scaleX(1.45)"></div><span class="verdict">✕ Don't</span><p>Stretch, squash, or distort. Hold Shift when resizing.</p></div>
+    <div class="cell dont"><div class="ex"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt="" style="filter:hue-rotate(170deg) saturate(1.6)"></div><span class="verdict">✕ Don't</span><p>Recolor. Green, gold, gray, and black only, as supplied.</p></div>
+    <div class="cell dont"><div class="ex"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt="" style="filter:drop-shadow(5px 6px 0 #CC8A00) drop-shadow(0 0 8px #00a)"></div><span class="verdict">✕ Don't</span><p>Add shadows, glows, outlines, bevels, or other effects.</p></div>
+    <div class="cell dont"><div class="ex"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt="" style="transform:rotate(-14deg)"></div><span class="verdict">✕ Don't</span><p>Rotate or tilt the logo.</p></div>
+    <div class="cell dont"><div class="ex" style="background:#006747"><img src="logos/svg/pacifica-secondary-wordmark-a-full-color.svg" alt=""></div><span class="verdict">✕ Don't</span><p>Put word marks or lettered logos on green or dark backgrounds. The letters have no outline and disappear.</p></div>
+    <div class="cell dont"><div class="ex"><div class="retype">PACIFICA<br>TRITONS</div></div><span class="verdict">✕ Don't</span><p>Type out the word mark, even in Triton Block. Place the official logo file.</p></div>
+    <div class="cell dont"><div class="ex busy"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt=""></div><span class="verdict">✕ Don't</span><p>Place the logo on busy photos or patterns. Find a calm area or add a solid panel behind it.</p></div>
+    <div class="cell dont"><div class="ex" style="gap:6px;grid-auto-flow:column"><img src="logos/svg/pacifica-alt-primary-trident-full-color.svg" alt="" style="height:70%"><img src="logos/svg/pacifica-secondary-wordmark-b-full-color.svg" alt="" style="height:70%"></div><span class="verdict">✕ Don't</span><p>Build new lockups by combining pieces. Use the Primary Word Mark file instead.</p></div>
+  </div>
+  <div class="note" style="margin-top:20px"><span class="lbl">Trademark</span><p>Every Pacifica mark carries a small ™ symbol. Keep it. Don't crop it off or erase it.</p></div>
+</div></section>
+
+<!-- COLOR -->
+<section class="row" id="color"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>04</b> Color</span><span class="r lbl"><span>Pantone · CMYK · RGB · HEX</span><span>Click any value to copy</span></span></div>
+  <h2 class="h-l">Color Palette</h2>
+  <p class="lead">Pacifica Green leads. Gold is an accent used sparingly, the way it appears only in the Triton's crown and armor. Gray, Dark Gray, and Black support.</p>
+  <div class="grid" id="swatches" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:28px"></div>
+  <p class="lbl" style="margin:24px 0 8px">Pacifica Green · shades &amp; tints</p>
+  <div class="ramp" id="ramp-green"></div>
+  <p class="lbl" style="margin:16px 0 8px">Pacifica Gold · shades &amp; tints</p>
+  <div class="ramp" id="ramp-gold"></div>
+  <div class="stack" style="margin-top:20px">
+    <div class="note"><span class="lbl">Base vs. tints</span><p><b>Base colors</b> are for primary brand moments: logos, headers, uniforms, signage. <b>Shades and tints</b> are for supporting work such as web UI, charts, table fills, and backgrounds. For print, match the official Pantone or CMYK values.</p></div>
+    <div class="note"><span class="lbl">Pantone</span><p>Pantone colors are official. Give print vendors the PMS number for spot-color jobs and the CMYK values for 4-color printing. On-screen colors may not match Pantone standards exactly; consult a current Pantone guide for color-critical work.</p></div>
+  </div>
+</div></section>
+
+<!-- APPAREL -->
+<section class="row" id="apparel"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>05</b> Uniforms &amp; Apparel</span><span class="r lbl"><span>Textile · Twill · Thread</span></span></div>
+  <h2 class="h-l">Uniform Specs</h2>
+  <p class="lead">Hand these numbers to any uniform supplier, screen printer, or embroidery shop so every jersey, polo, and cap comes out in the same green and gold.</p>
+  <div class="tbl" style="margin-top:28px"><table>
+    <thead><tr><th>Color</th><th>Textile (Pantone)</th><th>Twill (Liebe/Webster)</th><th>Madeira</th><th>Robison-Anton</th><th>Isacord</th><th>FuFu</th><th>New Era Cap</th><th>Grayscale</th></tr></thead>
+    <tbody class="num">
+      <tr><td><span class="sq" style="background:#006747"></span>Green</td><td>19-5420 TCX</td><td>Dark Green</td><td>1351</td><td>2458</td><td>5326</td><td>256</td><td>Green Bay</td><td>60%</td></tr>
+      <tr><td><span class="sq" style="background:#CC8A00"></span>Gold</td><td>15-1050 TCX</td><td>n/a</td><td>1025</td><td>2556</td><td>0824</td><td>512</td><td>Temple Gold</td><td>30%</td></tr>
+      <tr><td><span class="sq" style="background:#A2AAAD"></span>Gray</td><td>15-4101 TCX</td><td>Silver</td><td>1011</td><td>2592</td><td>0150</td><td>484</td><td>Cloud</td><td>30%</td></tr>
+      <tr><td><span class="sq" style="background:#54585A"></span>Dark Gray</td><td>18-0306 TCX</td><td>Lt Graphite</td><td>1164</td><td>2407</td><td>0111</td><td>488</td><td>Dark Gray</td><td>n/a</td></tr>
+      <tr><td><span class="sq" style="background:#000"></span>Black</td><td>19-1102 TCX</td><td>Black</td><td>1000</td><td>2296</td><td>0020</td><td>0020</td><td>Black</td><td>100%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="stack" style="margin-top:20px">
+    <div class="note"><span class="lbl">Dark Gray</span><p>Dark Gray is a helmet-detail color. It appears in the football helmet graphic. Don't use it as a main uniform or apparel color.</p></div>
+    <div class="note"><span class="lbl">Numbers &amp; helmets</span><p>Uniform numbers must use the official Pacifica numerals in the Logo Library, never a stock jersey font or Triton Block. Football helmets use the helmet graphic exactly as supplied, full color only.</p></div>
+    <p class="lbl">Thread color help lines (from the Brandiose sheet): Madeira 800.225.3001 · Robison-Anton 800.932.0250 · FuFu 888.484.7323</p>
+  </div>
+</div></section>
+
+<!-- ACCESSIBILITY -->
+<section class="row" id="accessibility"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>06</b> Accessibility</span><span class="r lbl"><span>WCAG 2.2</span><span>4.5:1 body · 3:1 large text &amp; UI</span></span></div>
+  <h2 class="h-l">Contrast</h2>
+  <p class="lead">WCAG requires at least <b>4.5:1</b> contrast for normal body text, and at least <b>3:1</b> for large text (18px and up, or 14px bold) and UI elements like icons, buttons, and input borders. Ratios below are calculated from the official HEX values.</p>
+  <div class="tbl" style="margin-top:28px"><table>
+    <thead><tr><th>Color</th><th>As text on white</th><th>As text on black</th><th>White text on it</th><th>Black text on it</th></tr></thead>
+    <tbody id="contrast" class="num"></tbody>
+  </table></div>
+  <div class="two" style="margin-top:20px">
+    <div class="note warn"><span class="lbl">Never</span><p><b>Gold text on Green, or Green on Gold.</b> The pair measures about 2.4:1, well under the 3:1 minimum. It looks bold on a jersey but is unreadable as text. Separate them with white, black, or plenty of space.</p></div>
+    <div class="note warn"><span class="lbl">Avoid</span><p><b>Gold and Gray as text on white</b> (2.9:1 and 2.4:1). Use them for accents, rules, and icons beside text, never for the words themselves. Both read well on black.</p></div>
+  </div>
+  <ul class="tick" style="margin-top:20px">
+    <li>Pacifica Green on white passes AA for all text sizes. Use it for headings and links.</li>
+    <li>Use Pacifica Green, or a Green shade, as button backgrounds with white text.</li>
+    <li>Avoid light tints behind white text; use them as subtle fills behind dark text.</li>
+    <li>Underline links regardless of color, so color isn't the only signal.</li>
+  </ul>
+</div></section>
+
+<!-- TYPE -->
+<section class="row" id="type">
+  <div class="row-in" style="padding-bottom:28px">
+    <div class="meta"><span class="lbl"><b>07</b> Typography</span><span class="r lbl"><span>Triton Block v1.000</span><span>4 styles · 180 characters</span><span>Open Sans for body</span></span></div>
+    <h2 class="h-l">Triton Block</h2>
+    <p class="lead">Pacifica's own headline typeface. <b>Triton Block</b> extends the athletic lettering of the PACIFICA TRITONS word mark into a full alphabet, so headlines, event titles, and player names match the logos. Type in the bar above to try it, drag the slider to resize, and pick a color.</p>
+    <div class="meta" style="margin:22px 0 0"><span></span><a class="btn" href="triton-block-fonts.zip" download>Download font family ↓</a></div>
+  </div>
+  <div class="spec-row">
+    <div class="meta" style="margin:0"><span class="lbl"><b>Triton Block Solid</b></span><span class="r lbl"><span>The dark letter fill from the logo</span><a class="dl-link" href="fonts/otf/TritonBlock-Solid.otf" download>OTF ↓</a><a class="dl-link" href="fonts/woff2/TritonBlock-Solid.woff2" download>WOFF2 ↓</a></span></div>
+    <div class="spec solid" data-i="0">Go Tritons</div>
+    <div class="foot lbl"><span>Everyday headlines in any brand color</span><span>Lowercase keys give small caps</span></div>
+  </div>
+  <div class="spec-row">
+    <div class="meta" style="margin:0"><span class="lbl"><b>Triton Block Shadow</b></span><span class="r lbl"><span>Outer layer, placed under Solid</span><a class="dl-link" href="fonts/otf/TritonBlock-Shadow.otf" download>OTF ↓</a><a class="dl-link" href="fonts/woff2/TritonBlock-Shadow.woff2" download>WOFF2 ↓</a></span></div>
+    <div class="spec layered" data-i="1"><span class="sh">Triton Pride</span><span class="so">Triton Pride</span></div>
+    <div class="foot lbl"><span>Shown layered: Shadow below, Solid on top, same baseline</span><span>Rebuilds the logo's two-layer look</span></div>
+  </div>
+  <div class="spec-row">
+    <div class="meta" style="margin:0"><span class="lbl"><b>Triton Block Outline</b></span><span class="r lbl"><span>Hollow rim, one color</span><a class="dl-link" href="fonts/otf/TritonBlock-Outline.otf" download>OTF ↓</a><a class="dl-link" href="fonts/woff2/TritonBlock-Outline.woff2" download>WOFF2 ↓</a></span></div>
+    <div class="spec outline" data-i="2">Green &amp; Gold</div>
+    <div class="foot lbl"><span>Screen printing, vinyl, tone-on-tone apparel</span><span></span></div>
+  </div>
+  <div class="spec-row">
+    <div class="meta" style="margin:0"><span class="lbl"><b>Triton Block Color</b></span><span class="r lbl"><span>Shadow + Solid in one color font</span><a class="dl-link" href="fonts/otf/TritonBlock-Color.otf" download>OTF ↓</a><a class="dl-link" href="fonts/woff2/TritonBlock-Color.woff2" download>WOFF2 ↓</a></span></div>
+    <div class="spec color" data-i="3">Defend the Sea</div>
+    <div class="foot lbl"><span>Palette 0 dark on white · palette 1 white on dark (switches with the theme)</span><span>Browsers, Figma, recent Adobe apps</span></div>
+  </div>
+  <div class="row-in" style="padding-top:28px">
+    <p class="lbl" style="margin-bottom:10px">Character set · hover to inspect</p>
+    <div class="glyphs" id="glyphs"></div>
+    <div class="grid g2" style="margin-top:28px">
+      <div class="cell" style="gap:14px">
+        <div class="meta" style="margin:0"><span class="lbl"><b>Open Sans</b> · body text</span><span class="r lbl"><a class="dl-link" href="https://fonts.google.com/specimen/Open+Sans" target="_blank" rel="noopener">Google Fonts ↗</a></span></div>
+        <div class="body-spec">Open Sans</div>
+        <p style="font-size:14px;color:var(--muted)">Paragraphs, captions, letters, forms, tables, and website body copy. Regular 400 and SemiBold 600, with Italic for light emphasis. Matches the district's body text.</p>
+      </div>
+      <div class="cell" style="gap:14px">
+        <div class="meta" style="margin:0"><span class="lbl"><b>Installing</b> Triton Block</span></div>
+        <ul class="tick">
+          <li><b>Mac:</b> double-click each .otf file, then click Install Font.</li>
+          <li><b>Windows:</b> right-click each .otf file and choose Install for all users.</li>
+          <li><b>Websites and Wix:</b> upload the .woff2 files as custom fonts.</li>
+          <li><b>Canva or Adobe Express:</b> upload the .otf files as brand fonts.</li>
+          <li><b>Small caps:</b> type lowercase, or use the c2sc feature to turn capitals into small caps.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note warn" style="margin-top:20px"><span class="lbl">Important</span><p><b>Triton Block does not replace the logo.</b> Never type PACIFICA TRITONS in Triton Block as a stand-in for the word mark, and don't use it for uniform numbers. Always place the official logo and numeral files from the Logo Library. It is a display face; don't set paragraphs in it.</p></div>
+  </div>
+</section>
+
+<!-- NAME -->
+<section class="row" id="name"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>08</b> Name &amp; Mascot</span></div>
+  <h2 class="h-l">Writing the Name</h2>
+  <div class="grid g2" style="margin-top:28px">
+    <div class="cell"><span class="verdict" style="color:var(--ok)">✓ Do</span><ul class="tick">
+      <li>Use <b>Pacifica High School</b> on first reference in formal writing, then <b>Pacifica</b>.</li>
+      <li>The team name is <b>Tritons</b>: capital T, plural. One athlete or the mascot figure is <b>a Triton</b>.</li>
+      <li>Write <b>Go Tritons!</b> or <b>Pacifica Tritons</b> in spirit copy.</li>
+      <li>Include <b>Oxnard Union High School District</b> on official documents, letterhead, and forms.</li></ul></div>
+    <div class="cell"><span class="verdict" style="color:var(--bad)">✕ Don't</span><ul class="tick">
+      <li>Write <b>Titans</b>. It's an easy typo on rosters and flyers, and spell-check won't catch it.</li>
+      <li>Use a lowercase "tritons" or put the name in quotes.</li>
+      <li>Type the team name in place of a logo; place the word mark file instead.</li></ul></div>
+  </div>
+</div></section>
+
+<!-- AI -->
+<section class="row" id="ai"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>09</b> AI &amp; Flyers</span><span class="r lbl"><span>Artwork only · real logo · real fonts</span></span></div>
+  <h2 class="h-l">AI Image Tools</h2>
+  <p class="lead">Image generators can't reproduce the Triton exactly. Ask one to "include the Pacifica logo" and it invents a new, slightly wrong Triton: extra trident prongs, a different crown, made-up lettering. Use AI for the artwork only, then add the real logo and text yourself.</p>
+  <ol class="steps grid g4" style="margin-top:28px">
+    <li><b>Generate artwork only</b><span>Backgrounds, illustration, or photo-style scenes. No logos, mascots, text, or seals.</span></li>
+    <li><b>Leave clear space</b><span>Ask for empty, calm space in a corner or along one edge where the logo will go.</span></li>
+    <li><b>Place the real logo</b><span>Drop the official PNG or SVG into Canva, Adobe Express, Slides, or Word.</span></li>
+    <li><b>Add text by hand</b><span>Set headlines in Triton Block and body copy in Open Sans.</span></li>
+  </ol>
+  <div class="grid g2" style="margin-top:20px">
+    <div class="prompt bad"><span class="verdict">✕ Avoid</span><q>Create a flyer for Pacifica High School's homecoming with the Tritons logo and school colors.</q><p class="lbl">The tool will draw a fake Triton and guess at "school colors."</p></div>
+    <div class="prompt good"><span class="verdict">✓ Use instead</span><q>Generate a bright, photographic stadium-at-night background in deep green #006747 with warm gold #CC8A00 light. Leave empty negative space in the upper third. No text, no logos, no mascots.</q><p class="lbl">Hex codes, not color names. Then add the logo and words yourself.</p></div>
+  </div>
+  <ul class="tick" style="margin-top:20px">
+    <li>Never ask an AI tool to draw, recreate, or "improve" the Triton, the trident, or the shield.</li>
+    <li>Never upload the logo as a reference image for an AI tool to imitate.</li>
+    <li>Confirm clear space and contrast before you publish.</li>
+  </ul>
+</div></section>
+
+<!-- ASK -->
+<section class="row" id="ask"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>10</b> Quick Help</span><span class="r lbl"><span>11 common jobs</span></span></div>
+  <h2 class="h-l">What Are You Making?</h2>
+  <p class="lead">Pick a common job, or describe what you're making, to get the right mark, version, colors, and rules for it.</p>
+  <form class="askf" id="askf" style="margin-top:24px">
+    <label class="tfield" for="askq"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg><input id="askq" type="text" placeholder="e.g. embroidered coaching polos, a club T-shirt, a homecoming flyer" autocomplete="off"></label>
+    <button class="btn" type="submit">Find guidance</button>
+  </form>
+  <div class="vchips" id="askchips" style="margin:16px 0 18px"></div>
+  <div class="answer" id="answer"></div>
+</div></section>
+</main>
+
+<footer><div class="frame">
+  <span class="lbl">Pacifica High School · Brand Style Guide · Logos and uniform graphics by Brandiose (v8/1/23) · Part of Oxnard Union High School District</span>
+  <span class="lbl">Questions before publishing? Teo Lopez · <button class="copy" data-copy="teo.lopez@oxnardunion.org">teo.lopez@oxnardunion.org</button></span>
+</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const LOGOS=[
+ {id:'primary-logo',name:'Primary Logo',desc:'The Triton over the PACIFICA TRITONS word mark. The default for official materials, programs, and signage.'},
+ {id:'alt-primary-trident',name:'Alternate Primary · Trident',desc:'The trident alone. For small spaces, favicons, caps, and sleeve hits.'},
+ {id:'secondary-logo',name:'Secondary Logo · Triton',desc:'The Triton figure alone. Athletics graphics, spirit wear, banners, and large-format art.'},
+ {id:'shield-logo',name:'Shield Logo',desc:'The Triton in a shield. Social avatars, stickers, patches, and square spaces.'},
+ {id:'primary-wordmark',name:'Primary Word Mark',desc:'Trident over stacked PACIFICA TRITONS. Headers and spaces where the figure is too detailed.'},
+ {id:'secondary-wordmark-a',name:'Secondary Word Mark',desc:'Spaced PACIFICA over bold TRITONS. Wide spaces: banners, web headers, chest prints.'},
+ {id:'secondary-wordmark-b',name:'Secondary Word Mark · Block',desc:'Stacked block lettering. Apparel, team bags, and backs of shirts.'},
+ {id:'numerals',name:'Numerals',desc:'Official jersey numerals 0 to 9. Uniform and warm-up numbers only.'},
+ {id:'football-helmet',name:'Football Helmet',desc:'Helmet graphic for football only. Full color only.',only:'full-color'}
+];
+const VHINT={
+ 'full-color':'Full color is the default. Use on white or light backgrounds when color printing or screens are available.',
+ 'one-color':'One color is Pacifica Green only. For single-ink screen printing, embroidery, and vinyl.',
+ 'grayscale':'Grayscale is for black-and-white printing where gray tones reproduce, like newsletters and office printers.',
+ 'black-white':'Black & white is solid black only. For fax, stamps, engraving, etching, and one-color black jobs.'
+};
+const VLABEL={'full-color':'Full color','one-color':'One color','grayscale':'Grayscale','black-white':'Black & white'};
+const file=(id,v,ext)=>`logos/${ext}/pacifica-${id}-${v}.${ext}`;
+let variant='full-color';
+function renderLogos(){
+  document.getElementById('vhint').textContent=VHINT[variant];
+  document.getElementById('logos').innerHTML=LOGOS.map(l=>{
+    const v=l.only||variant, note=l.only&&l.only!==variant?'<span class="tag">Full color only</span>':'';
+    return `<article class="cell"><div class="meta" style="margin:0"><span class="lbl"><b>${l.name}</b></span><span class="lbl">${VLABEL[v]}</span></div>
+    <div class="stage">${note}<img src="${file(l.id,v,'svg')}" alt="${l.name}, ${VLABEL[v]}" loading="lazy"></div>
+    <p>${l.desc}</p><div class="acts"><a class="dl-link" href="${file(l.id,v,'svg')}" download>SVG ↓</a><a class="dl-link" href="${file(l.id,v,'png')}" download>PNG ↓</a></div></article>`}).join('');
+}
+document.querySelectorAll('.vchips [data-v]').forEach(b=>b.addEventListener('click',()=>{
+  variant=b.dataset.v;document.querySelectorAll('.vchips [data-v]').forEach(x=>x.setAttribute('aria-pressed',x===b));renderLogos();}));
+renderLogos();
+
+/* Colors */
+const COLORS=[
+ {n:'Pacifica Green',hex:'006747',pms:'PMS 342 C',cmyk:'100 / 0 / 71 / 43',rgb:'0 / 103 / 71',fg:'#F6F0DA',use:'Lead color. Logos, headers, buttons, uniforms.'},
+ {n:'Pacifica Gold',hex:'CC8A00',pms:'PMS 131 C',cmyk:'0 / 32 / 100 / 9',rgb:'204 / 138 / 0',fg:'#11110F',use:'Accent only. Crown, trim, highlights, awards.'},
+ {n:'Gray',hex:'A2AAAD',pms:'PMS 429 C',cmyk:'3 / 0 / 0 / 32',rgb:'162 / 170 / 173',fg:'#11110F',use:'Support. Silver trim, dividers, backgrounds.'},
+ {n:'Dark Gray',hex:'54585A',pms:'PMS 425 C',cmyk:'0 / 0 / 0 / 77',rgb:'84 / 88 / 90',fg:'#F6F0DA',use:'Helmet detail. Secondary text and UI.'},
+ {n:'Black',hex:'000000',pms:'PMS Process Black C',cmyk:'0 / 0 / 0 / 100',rgb:'0 / 0 / 0',fg:'#F6F0DA',use:'Outlines, body text, one-color black jobs.'}
+];
+const cp=t=>`<button class="copy" data-copy="${t}" title="Copy ${t}">${t}</button>`;
+document.getElementById('swatches').innerHTML=COLORS.map(c=>`<div class="sw"><div class="chip" style="background:#${c.hex};color:${c.fg}"><span>${c.pms}</span><h3>${c.n}</h3></div>
+<dl><dt>HEX</dt><dd>${cp('#'+c.hex)}</dd><dt>RGB</dt><dd>${cp(c.rgb)}</dd><dt>CMYK</dt><dd>${cp(c.cmyk)}</dd><dt>PMS</dt><dd>${cp(c.pms)}</dd></dl><div class="use">${c.use}</div></div>`).join('');
+const h2r=h=>[0,2,4].map(i=>parseInt(h.slice(i,i+2),16));
+const r2h=a=>a.map(x=>Math.round(Math.max(0,Math.min(255,x))).toString(16).padStart(2,'0')).join('').toUpperCase();
+const mix=(h,t,amt)=>r2h(h2r(h).map((c,i)=>c+(t[i]-c)*amt));
+const lum=h=>{const f=c=>{c/=255;return c<=.03928?c/12.92:Math.pow((c+.055)/1.055,2.4)};const [r,g,b]=h2r(h);return .2126*f(r)+.7152*f(g)+.0722*f(b)};
+const ratio=(a,b)=>{const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+function ramp(el,hex){
+  const steps=[['Shade 40%',mix(hex,[0,0,0],.4)],['Shade 20%',mix(hex,[0,0,0],.2)],['Base',hex],['Tint 20%',mix(hex,[255,255,255],.2)],['Tint 40%',mix(hex,[255,255,255],.4)],['Tint 60%',mix(hex,[255,255,255],.6)],['Tint 80%',mix(hex,[255,255,255],.8)]];
+  document.getElementById(el).innerHTML=steps.map(([l,h])=>{const fg=ratio(h,'FFFFFF')>=4.5?'#fff':'#11110F';
+    return `<button data-copy="#${h}" style="background:#${h};color:${fg}" title="Copy #${h}">${l}<span>#${h}</span></button>`}).join('');
+}
+ramp('ramp-green','006747');ramp('ramp-gold','CC8A00');
+const grade=r=>r>=7?['aaa','AAA']:r>=4.5?['aa2','AA']:r>=3?['lg','Large only']:['fail','Fail'];
+const cell=(fg,bg)=>{const r=ratio(fg,bg),[c,l]=grade(r);return `<td><span class="aa" style="background:#${bg};color:#${fg}">Aa</span>${r.toFixed(2)}:1<span class="pill ${c}">${l}</span></td>`};
+const rows=[...COLORS.slice(0,4).map(c=>[c.n,c.hex]),['Green Shade 20%',mix('006747',[0,0,0],.2)],['Green Tint 60%',mix('006747',[255,255,255],.6)],['Gold Tint 80%',mix('CC8A00',[255,255,255],.8)]];
+document.getElementById('contrast').innerHTML=rows.map(([n,h])=>`<tr><td><span class="sq" style="background:#${h}"></span>${n}</td>${cell(h,'FFFFFF')}${cell(h,'000000')}${cell('FFFFFF',h)}${cell('000000',h)}</tr>`).join('');
+
+/* Type tester */
+const typeSec=document.getElementById('type');
+const PRESETS={spirit:['Go Tritons','Triton Pride','Green & Gold','Defend the Sea'],events:['Homecoming 2026','Friday Night Lights','Senior Night','Spring Showcase'],numbers:['Class of 2027','Kickoff 7:00 PM','$5 Admission','0123456789']};
+let preset='spirit';
+const tt=document.getElementById('tt'),sz=document.getElementById('sz'),szo=document.getElementById('szo');
+function setSpec(){
+  const own=tt.value.trim();
+  document.querySelectorAll('.spec').forEach(el=>{const t=own||PRESETS[preset][+el.dataset.i];
+    if(el.classList.contains('layered')){el.querySelectorAll('span').forEach(s=>s.textContent=t)}else el.textContent=t;});
+}
+tt.addEventListener('input',setSpec);
+document.querySelectorAll('.presets [data-p]').forEach(b=>b.addEventListener('click',()=>{preset=b.dataset.p;tt.value='';
+  document.querySelectorAll('.presets [data-p]').forEach(x=>x.setAttribute('aria-pressed',x===b));setSpec();}));
+sz.addEventListener('input',()=>{typeSec.style.setProperty('--size',sz.value+'px');szo.textContent=sz.value+'px'});
+document.querySelectorAll('.dot').forEach(d=>d.addEventListener('click',()=>{
+  typeSec.style.setProperty('--spec-color',d.dataset.c==='fg'?'var(--fg)':d.dataset.c);
+  document.querySelectorAll('.dot').forEach(x=>x.setAttribute('aria-pressed',x===d));}));
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  const r=document.documentElement,cur=r.dataset.theme||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+  r.dataset.theme=cur==='light'?'dark':'light';});
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  tt.value='';preset='spirit';document.querySelectorAll('.presets [data-p]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='spirit'));
+  sz.value=120;szo.textContent='120px';typeSec.style.removeProperty('--size');typeSec.style.removeProperty('--spec-color');
+  document.querySelectorAll('.dot').forEach((x,i)=>x.setAttribute('aria-pressed',i===0));delete document.documentElement.dataset.theme;setSpec();});
+document.getElementById('glyphs').innerHTML=[...'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?¿¡&@#$¢£€¥%*+=×÷±()[]{}«»©®™°ÁÉÍÓÚÑÜáéíóúñüÀÂÃÄÅÇ'].map(c=>`<span>${c.replace('&','&amp;')}</span>`).join('');
+
+/* Ask */
+const G=(logo,v)=>({logo,v});
+const ASK=[
+ {k:'Letter or policy doc',kw:['letter','policy','memo','handbook','document','letterhead','form','newsletter','word'],mark:G('primary-logo','full-color'),
+  use:'Primary Logo, full color, top left of the first page. Grayscale if it will be photocopied.',color:'Pacifica Green for headings only. Body text in black.',type:'Open Sans for body, Triton Block for the title.',rule:'Include "Oxnard Union High School District" in the header or footer.'},
+ {k:'Business cards',kw:['business card','card','name badge','badge','stationery'],mark:G('primary-wordmark','full-color'),
+  use:'Primary Word Mark, full color, on a white card.',color:'Green for the name line; gold only as a thin accent rule.',type:'Triton Block for the name, Open Sans for details.',rule:'Keep clear space; don\'t crowd the mark with contact info.'},
+ {k:'Social media avatar',kw:['social','instagram','facebook','avatar','profile','tiktok','x ','twitter','youtube','favicon','icon','app'],mark:G('shield-logo','full-color'),
+  use:'Shield Logo, full color, centered on white with room for the circular crop.',color:'White background, or Pacifica Green with the trident one-color version.',type:'No text in the avatar.',rule:'Never use the full Primary Logo as an avatar; the lettering becomes unreadable.'},
+ {k:'T-shirt or spirit wear',kw:['shirt','t-shirt','tee','hoodie','spirit','apparel','sweatshirt','merch','swag'],mark:G('secondary-wordmark-b','one-color'),
+  use:'Block Word Mark or Secondary Logo (Triton). One-color for single-ink screen printing.',color:'Green on white or gray shirts. On green or black shirts, use the Triton or trident, not lettered marks.',type:'Triton Block (Solid or Outline) for names, years, and slogans. Never retype PACIFICA TRITONS; use the logo files.',rule:'Send the printer the SVG and the PMS numbers from the Color section.'},
+ {k:'Embroidered polo or cap',kw:['embroider','polo','cap','hat','beanie','jacket','stitch','coach'],mark:G('alt-primary-trident','one-color'),
+  use:'Trident (small left chest or cap side) or Shield. One-color for simple stitching, full color if the vendor can digitize detail.',color:'Give the shop the thread numbers in the Uniforms table (Madeira 1351 Green, 1025 Gold).',type:'n/a',rule:'Don\'t embroider the full Primary Logo below 3 inches wide; the detail fills in.'},
+ {k:'Team uniform',kw:['uniform','jersey','number','numeral','football','helmet','basketball','soccer','baseball','softball','team'],mark:G('numerals','full-color'),
+  use:'Official Numerals for numbers; Block or Secondary Word Mark across the chest; helmet graphic for football only.',color:'Textile Pantone 19-5420 TCX Green and 15-1050 TCX Gold. Dark Gray is for helmet detail only.',type:'Numerals from the Logo Library only. Triton Block is fine for player names on the back.',rule:'Give every vendor these exact specs so all Pacifica teams match.'},
+ {k:'Banner or signage',kw:['banner','sign','signage','mural','building','marquee','window','vinyl','field','gym','wall','vehicle'],mark:G('primary-logo','full-color'),
+  use:'Primary Logo on light backgrounds; Secondary Logo (Triton) on green or dark.',color:'Spot colors PMS 342 C and PMS 131 C for paint or vinyl.',type:'Triton Block for any added text.',rule:'Send vector SVG files only, and check the clear space at full size.'},
+ {k:'AI flyer',kw:['ai','flyer','poster','canva','midjourney','chatgpt','dall','firefly','generate','image'],mark:G('primary-logo','full-color'),
+  use:'Generate background art only, then place the real Primary Logo PNG.',color:'Use hex codes #006747 and #CC8A00 in prompts.',type:'Add text by hand in Triton Block and Open Sans.',rule:'Never ask AI to draw the Triton. See the AI & Flyers section.'},
+ {k:'Club or ASB',kw:['club','asb','student','leadership','band','choir','drama','robotics','booster','pta','organization'],mark:G('primary-wordmark','full-color'),
+  use:'Use an official mark with your club name set beside it in Triton Block, outside the clear space.',color:'Pacifica Green and Gold from this page.',type:'Triton Block for the club name.',rule:'Don\'t redraw, costume, or modify the Triton for a club. Ask Teo for help with a lockup.'},
+ {k:'Award or certificate',kw:['award','certificate','plaque','trophy','diploma','honor','recognition'],mark:G('primary-logo','full-color'),
+  use:'Primary Logo, full color, centered at top.',color:'Green and Gold accents on white or cream stock.',type:'Triton Block for the award title, Open Sans for details.',rule:'Use metallic gold foil only as a match for PMS 131 C, approved by the printer.'},
+ {k:'Slides or video',kw:['slide','presentation','powerpoint','google slides','keynote','video','broadcast','livestream','graphic','lower third','scoreboard'],mark:G('primary-wordmark','full-color'),
+  use:'Primary Word Mark or Primary Logo on white; Triton or trident on green title slides.',color:'Green title bars with white text pass contrast. Avoid gold text on green.',type:'Triton Block headlines, Open Sans body.',rule:'Use PNGs from this page; never screenshot or copy the logo off a website.'}
+];
+function showAsk(a){
+  document.querySelectorAll('#askchips button').forEach(c=>c.setAttribute('aria-pressed',c.textContent===a.k));
+  const v=a.mark.v;
+  document.getElementById('answer').innerHTML=`<div class="stage"><img src="${file(a.mark.logo,v,'svg')}" alt="Recommended mark"></div>
+  <div><h3 class="h-s">${a.k}</h3><dl><dt>Logo</dt><dd>${a.use}</dd><dt>Color</dt><dd>${a.color}</dd><dt>Type</dt><dd>${a.type}</dd><dt>Rule</dt><dd>${a.rule}</dd></dl>
+  <p style="margin-top:14px;display:flex;gap:16px"><a class="dl-link" href="${file(a.mark.logo,v,'svg')}" download>SVG ↓</a><a class="dl-link" href="${file(a.mark.logo,v,'png')}" download>PNG ↓</a></p></div>`;
+}
+document.getElementById('askchips').innerHTML=ASK.map((a,i)=>`<button type="button" data-i="${i}" aria-pressed="false">${a.k}</button>`).join('');
+document.getElementById('askchips').addEventListener('click',e=>{const b=e.target.closest('button');if(b)showAsk(ASK[b.dataset.i])});
+document.getElementById('askf').addEventListener('submit',e=>{e.preventDefault();
+  const q=' '+document.getElementById('askq').value.toLowerCase()+' ';let best=null,score=0;
+  ASK.forEach(a=>{const s=a.kw.reduce((n,k)=>n+(q.includes(k)?k.length:0),0);if(s>score){score=s;best=a}});
+  if(best)showAsk(best);else document.getElementById('answer').innerHTML='<div></div><p>No match for that one. Try a word like "shirt", "banner", "polo", or "flyer", or email Teo Lopez at teo.lopez@oxnardunion.org before publishing.</p>';});
+showAsk(ASK[4]);
+
+/* Copy + toast */
+const toast=document.getElementById('toast');let tm;
+const say=m=>{toast.textContent=m;toast.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>toast.classList.remove('show'),1600)};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;const t=b.dataset.copy;
+  const p=navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject();
+  p.then(()=>say('Copied '+t)).catch(()=>{const r=document.createRange();r.selectNodeContents(b);const s=getSelection();s.removeAllRanges();s.addRange(r);say('Press Ctrl/Cmd+C to copy')});});
+
+/* Section highlight: top tabs + section links */
+const navLinks=[...document.querySelectorAll('.secnav a')],tabs=[...document.querySelectorAll('.tab')];
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const id=en.target.id;
+  navLinks.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+id));
+  const grp={logo:'logo','clear-space':'logo',usage:'usage',color:'color',apparel:'color',accessibility:'color',type:'type',name:'usage',ai:'usage',ask:'usage'}[id];
+  tabs.forEach(t=>t.classList.toggle('on',t.dataset.sec===grp));}),{rootMargin:'-35% 0px -60% 0px'});
+document.querySelectorAll('main section[id]').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
