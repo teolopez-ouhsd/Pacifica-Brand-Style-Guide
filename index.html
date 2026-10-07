@@ -20,7 +20,7 @@
 @font-face{font-family:"Triton Block Shadow";src:url("fonts/woff2/TritonBlock-Shadow.woff2") format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Triton Block Outline";src:url("fonts/woff2/TritonBlock-Outline.woff2") format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Triton Block Color";src:url("fonts/woff2/TritonBlock-Color.woff2") format("woff2");font-weight:100 900;font-display:swap}
-@font-palette-values --tb-light{font-family:"Triton Block Color";base-palette:1}
+@font-palette-values --tb-light{font-family:"Triton Block Color";base-palette:2}
 @font-palette-values --tb-dark{font-family:"Triton Block Color";base-palette:0}
 
 /* Layout: type-foundry specimen catalog. Dark-first, cream type, a full-width hairline frame;
@@ -46,7 +46,7 @@
   --ok:#0B6B3A; --bad:#A3241B; --warn:#7A5300; --tb-pal:--tb-dark; color-scheme:light}
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:120px}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.65 var(--body);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--dim)}
 a:hover{text-decoration-color:var(--fg)}
@@ -106,11 +106,14 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bor
 .reset{background:none;border:0;padding:0;font:600 13.5px/1 var(--body);color:var(--fg);cursor:pointer;margin-left:8px}
 .secnav{display:flex;gap:2px 22px;overflow-x:auto;scrollbar-width:none;padding-block:10px;font-size:12px}
 .secnav::-webkit-scrollbar{display:none}
+.secnav{align-items:center}
+.tester-in{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--navh,43px));z-index:20;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tester-in .tools{justify-content:flex-end}
 .secnav a{flex:none;color:var(--muted);text-decoration:none}
 .secnav a:hover,.secnav a.on{color:var(--fg)}
 .secnav .count{flex:none;font-family:var(--display);font-size:18px;line-height:1;color:var(--fg);margin-right:6px}
 @media (max-width:1000px){.tester{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.presets{display:none}}
-@media (max-width:620px){.tester{grid-template-columns:minmax(0,1fr) auto;gap:12px}.tools .dot,.tools .reset,.sizer{display:none}}
+@media (max-width:620px){.tester{grid-template-columns:1fr;gap:12px}.tester-in{position:static}.tester-in .presets{display:flex}.tester-in .tools{justify-content:flex-start}}
 
 /* Rows */
 .row{border-bottom:1px solid var(--line)}
@@ -202,6 +205,16 @@ th{font-weight:500;font-size:11.5px;color:var(--muted)}
 .ramp button span{font:500 11px/1.25 var(--mono)}
 @media (max-width:700px){.ramp{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,3.5vw,48px);align-items:start}
+.sec-head .h-l{font-size:clamp(2.6rem,4.8vw,5.2rem)}
+.sec-head .clip{margin:4px 0 0;max-width:none}
+@media (max-width:900px){.sec-head{grid-template-columns:1fr}.sec-head .clip{margin-top:4px}}
+.watchrow{margin-top:18px}
+.watch{display:inline-flex;align-items:center;gap:8px;background:none;color:var(--fg);border:1px solid var(--line);padding:8px 12px;font:600 13px/1 var(--body);cursor:pointer}
+.watch:hover{border-color:var(--fg)}
+.watch.on{background:var(--inv-bg);color:var(--inv-fg);border-color:var(--inv-bg)}
+.clip{margin:16px 0 0;max-width:960px;display:grid;gap:8px}
+.clip video{width:100%;height:auto;aspect-ratio:16/9;display:block;background:#11110F;border:1px solid var(--line)}
 /* Type specimens */
 #type{--size:120px;--spec-color:var(--fg)}
 .spec-row{border-bottom:1px solid var(--line);padding:16px clamp(16px,2vw,24px) 18px;display:grid;gap:8px}
@@ -262,25 +275,10 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 
 <div class="bar">
   <div class="frame box">
-    <div class="tester" style="padding-inline:clamp(16px,2vw,24px)">
-      <label class="tfield" for="tt"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M11 2l3 3-8 8H3v-3z"/></svg><input id="tt" type="text" placeholder="Your text" autocomplete="off"></label>
-      <div class="presets" role="group" aria-label="Sample text">
-        <button type="button" data-p="spirit" aria-pressed="true">Spirit</button>
-        <button type="button" data-p="events" aria-pressed="false">Events</button>
-        <button type="button" data-p="numbers" aria-pressed="false">Numbers</button>
-      </div>
-      <div class="sizer"><output id="szo" for="sz">120px</output><input id="sz" type="range" min="32" max="220" value="120" aria-label="Sample size"></div>
-      <div class="tools">
-        <button class="dot" type="button" data-c="fg" aria-pressed="true" aria-label="Cream or ink" style="background:var(--fg)"></button>
-        <button class="dot" type="button" data-c="#2E9E74" aria-pressed="false" aria-label="Pacifica Green" style="background:#006747"></button>
-        <button class="dot" type="button" data-c="#CC8A00" aria-pressed="false" aria-label="Pacifica Gold" style="background:#CC8A00"></button>
-        <button class="theme" type="button" id="themeBtn" aria-label="Switch light or dark"><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
-        <button class="reset" type="button" id="resetBtn">Reset All</button>
-      </div>
-    </div>
     <nav class="secnav" aria-label="Sections" style="padding-inline:clamp(16px,2vw,24px)">
-      <span class="count">10</span>
-      <a href="#logo">Logo Library</a><a href="#clear-space">Clear Space</a><a href="#usage">Usage Rules</a><a href="#color">Color</a><a href="#apparel">Uniforms</a><a href="#accessibility">Accessibility</a><a href="#type">Typography</a><a href="#name">Name</a><a href="#ai">AI &amp; Flyers</a><a href="#ask">Ask</a>
+      <span class="count">11</span>
+      <a href="#logo">Logo Library</a><a href="#clear-space">Clear Space</a><a href="#usage">Usage Rules</a><a href="#retired">Retired Logos</a><a href="#color">Color</a><a href="#apparel">Uniforms</a><a href="#accessibility">Accessibility</a><a href="#type">Typography</a><a href="#name">Name</a><a href="#ai">AI &amp; Flyers</a><a href="#ask">Ask</a>
+        <button class="theme" style="margin-left:auto;flex:none" type="button" id="themeBtn" aria-label="Switch light or dark"><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
     </nav>
   </div>
 </div>
@@ -302,8 +300,14 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 <!-- LOGO LIBRARY -->
 <section class="row" id="logo"><div class="row-in">
   <div class="meta"><span class="lbl"><b>01</b> Logo Library</span><span class="r lbl"><span>9 marks</span><span>4 color versions</span><span>SVG + PNG</span></span></div>
-  <h2 class="h-l">Logo Library</h2>
-  <p class="lead">Pick the mark that fits your space and the version that fits how it will be printed or displayed. Always use these files. <b>Never recreate, redraw, trace, or approximate any Pacifica mark.</b></p>
+  <div class="sec-head">
+    <div class="sec-text">
+      <h2 class="h-l">Logo Library</h2>
+      <p class="lead">Pick the mark that fits your space and the version that fits how it will be printed or displayed. Always use these files. <b>Never recreate, redraw, trace, or approximate any Pacifica mark.</b></p>
+      <div class="watchrow"><button class="watch" type="button" aria-controls="clip-logo"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg>Play the 33-second guide</button></div>
+    </div>
+    <figure class="clip" id="clip-logo"><video poster="videos/logo.jpg" controls muted playsinline loop preload="none" aria-describedby="clip-logo-d"><source src="videos/logo.mp4" type="video/mp4"><source src="videos/logo.webm" type="video/webm"></video><figcaption class="lbl" id="clip-logo-d">Choosing the right logo version for white, green, and dark backgrounds. Silent, with on-screen captions.</figcaption></figure>
+  </div>
   <div class="meta" style="margin:28px 0 12px">
     <div class="vchips" role="group" aria-label="Color version">
       <button type="button" data-v="full-color" aria-pressed="true">Full color</button>
@@ -321,8 +325,14 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 <!-- CLEAR SPACE -->
 <section class="row" id="clear-space"><div class="row-in">
   <div class="meta"><span class="lbl"><b>02</b> Clear Space &amp; Size</span><span class="r lbl"><span>x = cap height of PACIFICA</span></span></div>
-  <h2 class="h-l">Clear Space</h2>
-  <p class="lead">Keep the area around the logo free of text, photos, other logos, and the edge of the page so it can breathe and stay legible.</p>
+  <div class="sec-head">
+    <div class="sec-text">
+      <h2 class="h-l">Clear Space</h2>
+      <p class="lead">Keep the area around the logo free of text, photos, other logos, and the edge of the page so it can breathe and stay legible.</p>
+      <div class="watchrow"><button class="watch" type="button" aria-controls="clip-clearspace"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg>Play the 34-second guide</button></div>
+    </div>
+    <figure class="clip" id="clip-clearspace"><video poster="videos/clearspace.jpg" controls muted playsinline loop preload="none" aria-describedby="clip-clearspace-d"><source src="videos/clearspace.mp4" type="video/mp4"><source src="videos/clearspace.webm" type="video/webm"></video><figcaption class="lbl" id="clip-clearspace-d">How to measure clear space from the PACIFICA letters and keep text out of it. Silent, with on-screen captions.</figcaption></figure>
+  </div>
   <div class="two" style="margin-top:28px">
     <div class="cs"><div class="cs-box"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt="Pacifica primary logo with clear space zone marked"><span class="cs-x t">x</span><span class="cs-x b">x</span><span class="cs-x l">x</span><span class="cs-x r">x</span></div></div>
     <div class="stack">
@@ -345,8 +355,14 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 <!-- USAGE -->
 <section class="row" id="usage"><div class="row-in">
   <div class="meta"><span class="lbl"><b>03</b> Usage Rules</span><span class="r lbl"><span>4 do</span><span>8 don't</span></span></div>
-  <h2 class="h-l">Protect the Marks</h2>
-  <p class="lead">Proportions, colors, and construction are fixed. If you find yourself dragging a corner handle, changing a fill color, or adding an effect, stop and grab a different file from the library instead.</p>
+  <div class="sec-head">
+    <div class="sec-text">
+      <h2 class="h-l">Protect the Marks</h2>
+      <p class="lead">Proportions, colors, and construction are fixed. If you find yourself dragging a corner handle, changing a fill color, or adding an effect, stop and grab a different file from the library instead.</p>
+      <div class="watchrow"><button class="watch" type="button" aria-controls="clip-usage"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg>Play the 39-second guide</button></div>
+    </div>
+    <figure class="clip" id="clip-usage"><video poster="videos/usage.jpg" controls muted playsinline loop preload="none" aria-describedby="clip-usage-d"><source src="videos/usage.mp4" type="video/mp4"><source src="videos/usage.webm" type="video/webm"></video><figcaption class="lbl" id="clip-usage-d">Four common mistakes (stretching, recoloring, effects, rotating) and how to avoid them. Silent, with on-screen captions.</figcaption></figure>
+  </div>
   <div class="grid g4" style="margin-top:28px">
     <div class="cell do"><div class="ex"><img src="logos/svg/pacifica-primary-logo-full-color.svg" alt=""></div><span class="verdict">✓ Do</span><p>Use the full-color logo on white or light backgrounds whenever color printing is available.</p></div>
     <div class="cell do"><div class="ex" style="background:#006747"><img src="logos/svg/pacifica-alt-primary-trident-one-color.svg" alt=""></div><span class="verdict">✓ Do</span><p>On Pacifica Green, use the trident or Triton figure. Their built-in white fills keep them visible.</p></div>
@@ -364,11 +380,29 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   <div class="note" style="margin-top:20px"><span class="lbl">Trademark</span><p>Every Pacifica mark carries a small ™ symbol. Keep it. Don't crop it off or erase it.</p></div>
 </div></section>
 
+<!-- RETIRED -->
+<section class="row" id="retired"><div class="row-in">
+  <div class="meta"><span class="lbl"><b>04</b> Retired Logos</span><span class="r lbl"><span>2 archived marks</span><span>Not for download</span></span></div>
+  <h2 class="h-l">Retired Logos</h2>
+  <p class="lead">These earlier Pacifica marks have been replaced by the current Brandiose logo family. <b>Do not use them.</b> If you find one on a document, sign, uniform, vehicle, or webpage, replace it with a current file from the Logo Library.</p>
+  <div class="grid g2" style="margin-top:28px">
+    <div class="cell dont"><div class="ex" style="background:#fff;aspect-ratio:16/9"><img src="retired/retired-triton-script-lockup.jpg" alt="Retired logo: green Triton figure over a PACIFICA TRITONS script swoosh, above PACIFICA HIGH SCHOOL. Do not use."></div><span class="verdict">✕ Retired · Triton with script swoosh</span><p>An earlier mascot lockup: a green Triton over a slanted PACIFICA TRITONS swoosh, with PACIFICA HIGH SCHOOL set below. For a mascot mark, use the Primary Logo or the Secondary Logo (Triton) instead.</p></div>
+    <div class="cell dont"><div class="ex" style="background:#fff;aspect-ratio:16/9"><img src="retired/retired-trident-wordmark.png" alt="Retired logo: green trident above PACIFICA HIGH SCHOOL. Do not use."></div><span class="verdict">✕ Retired · Trident with school name</span><p>An earlier trident drawing stacked over PACIFICA HIGH SCHOOL. For a trident, use the Alternate Primary (Trident) or the Primary Word Mark instead.</p></div>
+  </div>
+  <div class="note warn" style="margin-top:20px"><span class="lbl">Do not use these</span><p>They may still turn up in old templates, spirit wear orders, printed programs, or web pages that haven't been updated yet. That doesn't make them current. Always pull logo files from this page, and don't redraw or combine pieces of the retired marks.</p></div>
+</div></section>
+
 <!-- COLOR -->
 <section class="row" id="color"><div class="row-in">
-  <div class="meta"><span class="lbl"><b>04</b> Color</span><span class="r lbl"><span>Pantone · CMYK · RGB · HEX</span><span>Click any value to copy</span></span></div>
-  <h2 class="h-l">Color Palette</h2>
-  <p class="lead">Pacifica Green leads. Gold is an accent used sparingly, the way it appears only in the Triton's crown and armor. Gray, Dark Gray, and Black support.</p>
+  <div class="meta"><span class="lbl"><b>05</b> Color</span><span class="r lbl"><span>Pantone · CMYK · RGB · HEX</span><span>Click any value to copy</span></span></div>
+  <div class="sec-head">
+    <div class="sec-text">
+      <h2 class="h-l">Color Palette</h2>
+      <p class="lead">Pacifica Green leads. Gold is an accent used sparingly, the way it appears only in the Triton's crown and armor. Gray, Dark Gray, and Black support.</p>
+      <div class="watchrow"><button class="watch" type="button" aria-controls="clip-color"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg>Play the 33-second guide</button></div>
+    </div>
+    <figure class="clip" id="clip-color"><video poster="videos/color.jpg" controls muted playsinline loop preload="none" aria-describedby="clip-color-d"><source src="videos/color.mp4" type="video/mp4"><source src="videos/color.webm" type="video/webm"></video><figcaption class="lbl" id="clip-color-d">The Pacifica palette and which color pairs pass contrast for text. Silent, with on-screen captions.</figcaption></figure>
+  </div>
   <div class="grid" id="swatches" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:28px"></div>
   <p class="lbl" style="margin:24px 0 8px">Pacifica Green · shades &amp; tints</p>
   <div class="ramp" id="ramp-green"></div>
@@ -382,7 +416,7 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 
 <!-- APPAREL -->
 <section class="row" id="apparel"><div class="row-in">
-  <div class="meta"><span class="lbl"><b>05</b> Uniforms &amp; Apparel</span><span class="r lbl"><span>Textile · Twill · Thread</span></span></div>
+  <div class="meta"><span class="lbl"><b>06</b> Uniforms &amp; Apparel</span><span class="r lbl"><span>Textile · Twill · Thread</span></span></div>
   <h2 class="h-l">Uniform Specs</h2>
   <p class="lead">Hand these numbers to any uniform supplier, screen printer, or embroidery shop so every jersey, polo, and cap comes out in the same green and gold.</p>
   <div class="tbl" style="margin-top:28px"><table>
@@ -404,7 +438,7 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 
 <!-- ACCESSIBILITY -->
 <section class="row" id="accessibility"><div class="row-in">
-  <div class="meta"><span class="lbl"><b>06</b> Accessibility</span><span class="r lbl"><span>WCAG 2.2</span><span>4.5:1 body · 3:1 large text &amp; UI</span></span></div>
+  <div class="meta"><span class="lbl"><b>07</b> Accessibility</span><span class="r lbl"><span>WCAG 2.2</span><span>4.5:1 body · 3:1 large text &amp; UI</span></span></div>
   <h2 class="h-l">Contrast</h2>
   <p class="lead">WCAG requires at least <b>4.5:1</b> contrast for normal body text, and at least <b>3:1</b> for large text (18px and up, or 14px bold) and UI elements like icons, buttons, and input borders. Ratios below are calculated from the official HEX values.</p>
   <div class="tbl" style="margin-top:28px"><table>
@@ -426,11 +460,32 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 <!-- TYPE -->
 <section class="row" id="type">
   <div class="row-in" style="padding-bottom:28px">
-    <div class="meta"><span class="lbl"><b>07</b> Typography</span><span class="r lbl"><span>Triton Block v1.000</span><span>4 styles · 180 characters</span><span>Open Sans for body</span></span></div>
-    <h2 class="h-l">Triton Block</h2>
-    <p class="lead">Pacifica's own headline typeface. <b>Triton Block</b> extends the athletic lettering of the PACIFICA TRITONS word mark into a full alphabet, so headlines, event titles, and player names match the logos. Type in the bar above to try it, drag the slider to resize, and pick a color.</p>
+    <div class="meta"><span class="lbl"><b>08</b> Typography</span><span class="r lbl"><span>Triton Block v1.005</span><span>4 styles · 181 characters</span><span>Open Sans for body</span></span></div>
+    <div class="sec-head">
+      <div class="sec-text">
+        <h2 class="h-l">Triton Block</h2>
+        <p class="lead">Pacifica's own headline typeface. <b>Triton Block</b> extends the athletic lettering of the PACIFICA TRITONS word mark into a full alphabet, so headlines, event titles, and player names match the logos. Use the tester below: type your own wording or pick a preset, drag the slider to resize, and choose a color.</p>
+        <div class="watchrow"><button class="watch" type="button" aria-controls="clip-type"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z" fill="currentColor"/></svg>Play the 39-second guide</button></div>
+      </div>
+      <figure class="clip" id="clip-type"><video poster="videos/type.jpg" controls muted playsinline loop preload="none" aria-describedby="clip-type-d"><source src="videos/type.mp4" type="video/mp4"><source src="videos/type.webm" type="video/webm"></video><figcaption class="lbl" id="clip-type-d">Using the Triton Block tester: typing, resizing, picking colors, and the four styles. Silent, with on-screen captions.</figcaption></figure>
+    </div>
     <div class="meta" style="margin:22px 0 0"><span></span><a class="btn" href="triton-block-fonts.zip" download>Download font family ↓</a></div>
   </div>
+    <div class="tester tester-in" aria-label="Type tester" style="padding-inline:clamp(16px,2vw,24px)">
+      <label class="tfield" for="tt"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M11 2l3 3-8 8H3v-3z"/></svg><input id="tt" type="text" placeholder="Your text" autocomplete="off"></label>
+      <div class="presets" role="group" aria-label="Sample text">
+        <button type="button" data-p="spirit" aria-pressed="true">Spirit</button>
+        <button type="button" data-p="events" aria-pressed="false">Events</button>
+        <button type="button" data-p="numbers" aria-pressed="false">Numbers</button>
+      </div>
+      <div class="sizer"><output id="szo" for="sz">120px</output><input id="sz" type="range" min="32" max="220" value="120" aria-label="Sample size"></div>
+      <div class="tools">
+        <button class="dot" type="button" data-c="fg" aria-pressed="true" aria-label="Cream or ink" style="background:var(--fg)"></button>
+        <button class="dot" type="button" data-c="#2E9E74" aria-pressed="false" aria-label="Pacifica Green" style="background:#006747"></button>
+        <button class="dot" type="button" data-c="#CC8A00" aria-pressed="false" aria-label="Pacifica Gold" style="background:#CC8A00"></button>
+        <button class="reset" type="button" id="resetBtn">Reset All</button>
+      </div>
+    </div>
   <div class="spec-row">
     <div class="meta" style="margin:0"><span class="lbl"><b>Triton Block Solid</b></span><span class="r lbl"><span>The dark letter fill from the logo</span><a class="dl-link" href="fonts/otf/TritonBlock-Solid.otf" download>OTF ↓</a><a class="dl-link" href="fonts/woff2/TritonBlock-Solid.woff2" download>WOFF2 ↓</a></span></div>
     <div class="spec solid" data-i="0">Go Tritons</div>
@@ -449,7 +504,7 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   <div class="spec-row">
     <div class="meta" style="margin:0"><span class="lbl"><b>Triton Block Color</b></span><span class="r lbl"><span>Shadow + Solid in one color font</span><a class="dl-link" href="fonts/otf/TritonBlock-Color.otf" download>OTF ↓</a><a class="dl-link" href="fonts/woff2/TritonBlock-Color.woff2" download>WOFF2 ↓</a></span></div>
     <div class="spec color" data-i="3">Defend the Sea</div>
-    <div class="foot lbl"><span>Palette 0 dark on white · palette 1 white on dark (switches with the theme)</span><span>Browsers, Figma, recent Adobe apps</span></div>
+    <div class="foot lbl"><span>Default: black fill, Pacifica green outline · on dark backgrounds: white fill, green outline (switches with the theme) · 4 built-in palettes</span><span>Browsers, Figma, recent Adobe apps</span></div>
   </div>
   <div class="row-in" style="padding-top:28px">
     <p class="lbl" style="margin-bottom:10px">Character set · hover to inspect</p>
@@ -463,21 +518,22 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
       <div class="cell" style="gap:14px">
         <div class="meta" style="margin:0"><span class="lbl"><b>Installing</b> Triton Block</span></div>
         <ul class="tick">
-          <li><b>Mac:</b> double-click each .otf file, then click Install Font.</li>
+          <li><b>Mac:</b> remove any older version first, then double-click each .otf file and click Install Font.</li>
           <li><b>Windows:</b> right-click each .otf file and choose Install for all users.</li>
           <li><b>Websites and Wix:</b> upload the .woff2 files as custom fonts.</li>
           <li><b>Canva or Adobe Express:</b> upload the .otf files as brand fonts.</li>
           <li><b>Small caps:</b> type lowercase, or use the c2sc feature to turn capitals into small caps.</li>
+          <li><b>Custom colors in any app:</b> put Triton Block Shadow underneath in the outline color (for example #006548), then Triton Block Solid on top at the same size and position in the fill color.</li>
         </ul>
       </div>
     </div>
-    <div class="note warn" style="margin-top:20px"><span class="lbl">Important</span><p><b>Triton Block does not replace the logo.</b> Never type PACIFICA TRITONS in Triton Block as a stand-in for the word mark, and don't use it for uniform numbers. Always place the official logo and numeral files from the Logo Library. It is a display face; don't set paragraphs in it.</p></div>
+    <div class="note warn" style="margin-top:20px"><span class="lbl">Important</span><p><b>Triton Block does not replace the logo.</b> Never type PACIFICA TRITONS in Triton Block as a stand-in for the word mark, and don't use it for uniform numbers. Its figures are drawn from the official Pacifica numerals but scaled to fit with letters, so jerseys and warm-ups still use the numeral files from the Logo Library. Always place the official logo files. It is a display face; don't set paragraphs in it.</p></div>
   </div>
 </section>
 
 <!-- NAME -->
 <section class="row" id="name"><div class="row-in">
-  <div class="meta"><span class="lbl"><b>08</b> Name &amp; Mascot</span></div>
+  <div class="meta"><span class="lbl"><b>09</b> Name &amp; Mascot</span></div>
   <h2 class="h-l">Writing the Name</h2>
   <div class="grid g2" style="margin-top:28px">
     <div class="cell"><span class="verdict" style="color:var(--ok)">✓ Do</span><ul class="tick">
@@ -494,7 +550,7 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 
 <!-- AI -->
 <section class="row" id="ai"><div class="row-in">
-  <div class="meta"><span class="lbl"><b>09</b> AI &amp; Flyers</span><span class="r lbl"><span>Artwork only · real logo · real fonts</span></span></div>
+  <div class="meta"><span class="lbl"><b>10</b> AI &amp; Flyers</span><span class="r lbl"><span>Artwork only · real logo · real fonts</span></span></div>
   <h2 class="h-l">AI Image Tools</h2>
   <p class="lead">Image generators can't reproduce the Triton exactly. Ask one to "include the Pacifica logo" and it invents a new, slightly wrong Triton: extra trident prongs, a different crown, made-up lettering. Use AI for the artwork only, then add the real logo and text yourself.</p>
   <ol class="steps grid g4" style="margin-top:28px">
@@ -516,7 +572,7 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 
 <!-- ASK -->
 <section class="row" id="ask"><div class="row-in">
-  <div class="meta"><span class="lbl"><b>10</b> Quick Help</span><span class="r lbl"><span>11 common jobs</span></span></div>
+  <div class="meta"><span class="lbl"><b>11</b> Quick Help</span><span class="r lbl"><span>11 common jobs</span></span></div>
   <h2 class="h-l">What Are You Making?</h2>
   <p class="lead">Pick a common job, or describe what you're making, to get the right mark, version, colors, and rules for it.</p>
   <form class="askf" id="askf" style="margin-top:24px">
@@ -595,6 +651,7 @@ const rows=[...COLORS.slice(0,4).map(c=>[c.n,c.hex]),['Green Shade 20%',mix('006
 document.getElementById('contrast').innerHTML=rows.map(([n,h])=>`<tr><td><span class="sq" style="background:#${h}"></span>${n}</td>${cell(h,'FFFFFF')}${cell(h,'000000')}${cell('FFFFFF',h)}${cell('000000',h)}</tr>`).join('');
 
 /* Type tester */
+const setNavH=()=>{const n=document.querySelector('.bar');if(n)document.documentElement.style.setProperty('--navh',n.offsetHeight+'px')};setNavH();addEventListener('resize',setNavH);
 const typeSec=document.getElementById('type');
 const PRESETS={spirit:['Go Tritons','Triton Pride','Green & Gold','Defend the Sea'],events:['Homecoming 2026','Friday Night Lights','Senior Night','Spring Showcase'],numbers:['Class of 2027','Kickoff 7:00 PM','$5 Admission','0123456789']};
 let preset='spirit';
@@ -617,7 +674,7 @@ document.getElementById('themeBtn').addEventListener('click',()=>{
 document.getElementById('resetBtn').addEventListener('click',()=>{
   tt.value='';preset='spirit';document.querySelectorAll('.presets [data-p]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='spirit'));
   sz.value=120;szo.textContent='120px';typeSec.style.removeProperty('--size');typeSec.style.removeProperty('--spec-color');
-  document.querySelectorAll('.dot').forEach((x,i)=>x.setAttribute('aria-pressed',i===0));delete document.documentElement.dataset.theme;setSpec();});
+  document.querySelectorAll('.dot').forEach((x,i)=>x.setAttribute('aria-pressed',i===0));setSpec();});
 document.getElementById('glyphs').innerHTML=[...'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?¿¡&@#$¢£€¥%*+=×÷±()[]{}«»©®™°ÁÉÍÓÚÑÜáéíóúñüÀÂÃÄÅÇ'].map(c=>`<span>${c.replace('&','&amp;')}</span>`).join('');
 
 /* Ask */
@@ -668,11 +725,16 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if
   const p=navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject();
   p.then(()=>say('Copied '+t)).catch(()=>{const r=document.createRange();r.selectNodeContents(b);const s=getSelection();s.removeAllRanges();s.addRange(r);say('Press Ctrl/Cmd+C to copy')});});
 
+/* Section video guides: the video sits beside each header; the button plays or pauses it */
+document.querySelectorAll('.watch').forEach(b=>{const v=document.getElementById(b.getAttribute('aria-controls')).querySelector('video'),label=b.lastChild.textContent;
+  const sync=()=>{b.lastChild.textContent=v.paused?label:'Pause the guide';b.classList.toggle('on',!v.paused)};
+  v.addEventListener('play',sync);v.addEventListener('pause',sync);
+  b.addEventListener('click',()=>{if(v.paused){v.play().catch(()=>{})}else v.pause()});});
 /* Section highlight: top tabs + section links */
 const navLinks=[...document.querySelectorAll('.secnav a')],tabs=[...document.querySelectorAll('.tab')];
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const id=en.target.id;
   navLinks.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+id));
-  const grp={logo:'logo','clear-space':'logo',usage:'usage',color:'color',apparel:'color',accessibility:'color',type:'type',name:'usage',ai:'usage',ask:'usage'}[id];
+  const grp={logo:'logo','clear-space':'logo',usage:'usage',retired:'usage',color:'color',apparel:'color',accessibility:'color',type:'type',name:'usage',ai:'usage',ask:'usage'}[id];
   tabs.forEach(t=>t.classList.toggle('on',t.dataset.sec===grp));}),{rootMargin:'-35% 0px -60% 0px'});
 document.querySelectorAll('main section[id]').forEach(s=>io.observe(s));
 </script>
