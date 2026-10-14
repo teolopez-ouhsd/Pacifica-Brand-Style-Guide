@@ -30,7 +30,7 @@
   --bg:#11110F; --panel:#161614; --fg:#F6F0DA; --muted:#8E8B80; --dim:#5F5D56; --line:#2C2B27;
   --inv-bg:#F6F0DA; --inv-fg:#11110F; --stage:#F6F0DA; --stage-line:#2C2B27;
   --ok:#9AD6AE; --bad:#F09C8C; --warn:#E6C066; --tb-pal:--tb-light;
-  --green:#006747; --gold:#CC8A00;
+  --green:#006747; --gold:#CC8A00; --k-line:#3A3934;
   --accent:linear-gradient(90deg,#006747 33.34%,#000000 33.34% 66.67%,#CC8A00 66.67%);
   --sec-top:clamp(48px,6vw,88px); --sec-bottom:clamp(72px,9vw,128px); --meta-gap:clamp(28px,3.5vw,48px); --lead-gap:clamp(20px,2vw,28px); --content-gap:clamp(36px,4.5vw,56px); --block-gap:clamp(32px,4vw,48px); --sublabel-gap:clamp(40px,5vw,64px);
   --display:"Triton Block","Arial Narrow",sans-serif;
@@ -41,11 +41,11 @@
 @media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
   --bg:#F3EFE2; --panel:#F8F5EB; --fg:#141412; --muted:#69665C; --dim:#9C998D; --line:#D6D0BE;
   --inv-bg:#141412; --inv-fg:#F6F0DA; --stage:#FFFFFF; --stage-line:#D6D0BE;
-  --ok:#0B6B3A; --bad:#A3241B; --warn:#7A5300; --tb-pal:--tb-dark; color-scheme:light}}
+  --ok:#0B6B3A; --bad:#A3241B; --warn:#7A5300; --tb-pal:--tb-dark; --k-line:transparent; color-scheme:light}}
 :root[data-theme="light"]{
   --bg:#F3EFE2; --panel:#F8F5EB; --fg:#141412; --muted:#69665C; --dim:#9C998D; --line:#D6D0BE;
   --inv-bg:#141412; --inv-fg:#F6F0DA; --stage:#FFFFFF; --stage-line:#D6D0BE;
-  --ok:#0B6B3A; --bad:#A3241B; --warn:#7A5300; --tb-pal:--tb-dark; color-scheme:light}
+  --ok:#0B6B3A; --bad:#A3241B; --warn:#7A5300; --tb-pal:--tb-dark; --k-line:transparent; color-scheme:light}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -141,6 +141,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bor
 .h-l+.lead{margin-top:var(--lead-gap)}
 .accent-bar{display:flex;height:6px;width:120px;margin-bottom:22px}
 .accent-bar span{flex:1}
+.accent-bar .k{box-shadow:inset 0 0 0 1px var(--k-line)}
 .meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}
 .meta .r{display:flex;gap:4px 28px;flex-wrap:wrap}
 .h-xl{font-family:var(--display);font-size:clamp(3.4rem,9.5vw,9.5rem);line-height:.92;text-transform:uppercase;letter-spacing:.005em}
@@ -308,7 +309,7 @@ footer .frame{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
   <div class="meta"><span class="lbl"><b>Pacifica High School</b> · Oxnard, California</span><span class="r lbl"><span>Official Club Logos &amp; Uniform Graphics</span><span>Marks by Brandiose · v8/1/23</span><span>Oxnard Union High School District</span></span></div>
   <div class="hero-grid">
     <div class="hero-copy">
-      <div class="accent-bar" aria-hidden="true"><span style="background:#006747"></span><span style="background:#000000;box-shadow:inset 0 0 0 1px var(--line)"></span><span style="background:#CC8A00"></span></div>
+      <div class="accent-bar" aria-hidden="true"><span style="background:#006747"></span><span class="k" style="background:#000000"></span><span style="background:#CC8A00"></span></div>
       <h1 class="h-xl" style="margin-bottom:18px">Tritons Brand<br>Style Guide</h1>
       <p>How to use the Pacifica Tritons logos, colors, and type consistently across print, web, apparel, uniforms, presentations, and AI-generated materials.</p>
       <p><b>Everyone creating Pacifica materials, including staff, coaches, clubs, ASB, and boosters, should check this page before designing anything new.</b></p>
